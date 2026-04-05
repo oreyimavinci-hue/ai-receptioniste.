@@ -1,11 +1,11 @@
 const express = require("express");
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("Server is working");
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log("Server started");
+app.all("/voice", (req, res) => {
+  res.type("text/xml");
+  res.send(`
+    <Response>
+      <Say>Hello, thank you for calling. How can I help you?</Say>
+    </Response>
+  `);
 });
